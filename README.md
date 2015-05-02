@@ -9,6 +9,4 @@ The technique utilized is the monocycle implementation (all instruction cycle st
 
 Set of instructions supported:
 
-LW    ADD    SLT   BEQ   J
-SW    ADDI   SLTI  BNE   JAL
-AND   SUB                JR
+LW, SW, AND, ADD, ADDI, SUB, SLT, SLTI, BEQ, BNE, J, JAL and JR.
