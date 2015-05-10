@@ -13,7 +13,7 @@ architecture behavior of D_reg is
     signal aux: std_logic_vector(31 downto 0);
 begin
     process (reg_clk) begin
-        if (reg_clk'event and reg_clk = '1') then
+        if rising_edge(reg_clk) then
             aux <= D;
         end if;
     end process;
