@@ -1,14 +1,14 @@
+--Authors: Gabriel Galli and Vladimir Belinski
+--Description: entity and architecture of a MUX 4X1.
+
 library ieee;
 use ieee.std_logic_1164.all;
 
 entity mux_4x1 is
     port(
-        sel: in std_logic_vector(1 downto 0);
-		I00: in std_logic_vector(31 downto 0);
-		I01: in std_logic_vector(31 downto 0);
-		I10: in std_logic_vector(31 downto 0);
-		I11: in std_logic_vector(31 downto 0);
-		O: out std_logic_vector(31 downto 0)
+       sel: in std_logic_vector(1 downto 0);
+       I00, I01, I10, I11: in std_logic_vector(31 downto 0);
+       O: out std_logic_vector(31 downto 0)
     );
 end mux_4x1;
 
