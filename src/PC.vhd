@@ -4,15 +4,15 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity D_reg is
+entity PC is
    port(
-        reg_clk: in std_logic;
+      reg_clk: in std_logic;
 		D: in std_logic_vector(31 downto 0);
 		Q: out std_logic_vector(31 downto 0)
    );
-end D_reg;
+end PC;
 
-architecture behavior of D_reg is
+architecture behavior of PC is
     signal aux: std_logic_vector(31 downto 0);
 begin
     process (reg_clk) begin
