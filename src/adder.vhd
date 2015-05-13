@@ -1,8 +1,8 @@
 --Authors: Gabriel Galli and Vladimir Belinski
 --Description: entity and architecture of an adder.
 
-library IEEE;
-use IEEE.std_logic_1164.all;
+library ieee;
+use ieee.std_logic_1164.all;
 
 entity adder is
 	port(
@@ -19,7 +19,7 @@ begin
 		variable ad: std_logic_vector (31 downto 0);
 		variable C: std_logic;
 	begin
-	
+
 	C := Cin;
 
 	for i in 0 to 31 loop
