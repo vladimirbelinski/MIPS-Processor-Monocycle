@@ -9,5 +9,5 @@ package matrix is
 	type memory is array(0 to 255) of signed(31 downto 0);
 end;
 
-package body matrix is
-end package body;
+-- package body matrix is
+-- end package body;

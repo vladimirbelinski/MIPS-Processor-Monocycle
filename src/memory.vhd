@@ -6,7 +6,7 @@ use work.matrix.all;
 entity data_memory is
     port(
 	   MemRead, MemWrite: in std_logic;
-       address: in unsigned(4 downto 0);
+       address: in unsigned(31 downto 0);
        wr_data: in signed(31 downto 0);
        r_data: out signed(31 downto 0)
     );
@@ -21,7 +21,7 @@ begin
 	process(MemRead, MemWrite) is
     begin
 		if rising_edge(MemRead) then
-			r_data <= bank(to_integer(address));
+            r_data <= bank(to_integer(address));
 		elsif rising_edge(MemWrite) then
 			bank(to_integer(address)) <= wr_data;
 		end if;

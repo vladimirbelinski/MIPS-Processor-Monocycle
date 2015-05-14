@@ -11,10 +11,12 @@ entity control is
 end control;
 
 architecture behavior of control is
+	signal ins: unsigned(7 downto 0);
 begin
-	process(ins_31_26) is
+	ins <= "00" & ins_31_26;
+	process(ins_31_26) is -- activation should be ins_31_26 or ins?
 	begin
-		case "00" & ins_31_26 is
+		case ins is
 			when x"00"  => -- R-format
 				RegDst   <= '1';
 				ALUSrc   <= '0';
