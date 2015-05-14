@@ -1,11 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity alu_control is
 	port(
-		ALUOp: in std_logic_vector(1 downto 0);
-		funct: in std_logic_vector(5 downto 0);
-		op: out std_logic_vector(2 downto 0)
+		ALUOp: in unsigned(1 downto 0);
+		funct: in unsigned(5 downto 0);
+		op: out unsigned(2 downto 0)
 	);
 end alu_control;
 

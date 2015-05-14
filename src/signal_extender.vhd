@@ -3,11 +3,12 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity signal_extender is
     port(
-        ins: in std_logic_vector(15 downto 0);
-        output: out std_logic_vector(31 downto 0)
+        ins: in signed(15 downto 0);
+        output: out signed(31 downto 0)
     );
 end signal_extender;
 

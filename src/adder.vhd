@@ -3,12 +3,13 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity adder is
 	port(
 	    Cin: in std_logic;
-	    A, B: in std_logic_vector(31 downto 0);
-	    O: out std_logic_vector(31 downto 0);
+	    A, B: in signed(31 downto 0);
+	    O: out signed(31 downto 0);
 	    Cout: out std_logic
 	);
 end entity adder;
@@ -16,7 +17,7 @@ end entity adder;
 architecture add of adder is
 begin
 	process (A, B, Cin)
-		variable ad: std_logic_vector (31 downto 0);
+		variable ad: signed (31 downto 0);
 		variable C: std_logic;
 	begin
 

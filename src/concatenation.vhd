@@ -1,10 +1,11 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity concatenator is
     port(
-		pc_31_28, ins_25_0: in std_logic_vector(31 downto 0);
-        j: out std_logic_vector(31 downto 0)
+		pc_31_28, ins_25_0: in signed(31 downto 0);
+        j: out signed(31 downto 0)
     );
 end concatenator;
 

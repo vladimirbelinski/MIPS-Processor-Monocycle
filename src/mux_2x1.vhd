@@ -3,12 +3,13 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity mux_2x1 is
 	port (
 		sel: in std_logic;
-		A, B: in std_logic_vector(31 downto 0);
-      O: out std_logic_vector(31 downto 0)
+		A, B: in signed(31 downto 0);
+		O: out signed(31 downto 0)
 	);
 end mux_2x1;
 
@@ -17,7 +18,7 @@ begin
 	 process(sel)
     begin
         case sel is
-            when '0'   => O <= A;
+            when '0'    => O <= A;
             when others => O <= B;
         end case;
     end process;
