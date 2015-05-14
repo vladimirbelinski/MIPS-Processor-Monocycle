@@ -16,26 +16,28 @@ entity ULA is
 end ULA;
 
 architecture behavior of ULA is
+
+	signal result: signed(31 downto 0);
+
 begin
     process(ALU_control) is
     begin
         case ALU_control is
-            when "000"   => if ((A and B)= "00000000000000000000000000000000") then ALU_result <= A and B; Zero <= '1';
-                            else ALU_result <= A and B; Zero <= '0';
-                            end if;
-            when "001"   => if ((A or B)= "00000000000000000000000000000000") then ALU_result <= A or B; Zero <= '1';
-                            else ALU_result <= A or B; Zero <= '0';
-                            end if;
-            when "110"   => if ((A - B)= "00000000000000000000000000000000") then ALU_result <= A - B; Zero <= '1';
-                            else ALU_result <= A - B; Zero <= '0';
-                            end if;
-            when "111"   => if(A < B) then ALU_result <= "00000000000000000000000000000000"; Zero <= '1';
-                            else ALU_result <= "11111111111111111111111111111111"; Zero <= '0';
-                            end if;
-            when others =>  if ((A + B)= "00000000000000000000000000000000") then ALU_result <= A + B; Zero <= '1';
-                            else ALU_result <= A + B; Zero <= '0';
-                            end if;
+            when "000"  => result <= A and B;
+            when "001"  => result <= A or B;
+            when "110"  => result <= A - B;
+            when "111"  =>
+				if (A < B) then result <= x"00000000";
+                else result <= x"00000001";
+                end if;
+            when others => result <= A + B;
         end case;
+        
+        if (result = x"00000000") then Zero <= '1';
+        else Zero <= '0';
+        end if;
     end process;
+    
+    ALU_result <= result;
     
 end behavior;
