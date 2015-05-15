@@ -20,13 +20,13 @@ begin
 
 	process (MemRead, MemWrite, address, write_data) is
 	begin
-		if MemRead = '1' then
-            read_data <= bank(to_integer(address)) & bank(to_integer(address + 1)) & bank(to_integer(address + 2)) & bank(to_integer(address + 3));
-		elsif MemWrite = '1' then
+        if MemWrite = '1' then
 			bank(to_integer(address))     <= write_data(31 downto 24);
 			bank(to_integer(address + 1)) <= write_data(23 downto 16);
 			bank(to_integer(address + 2)) <= write_data(15 downto 8);
 			bank(to_integer(address + 3)) <= write_data(7 downto 0);
+		elsif MemRead = '1' then
+            read_data <= bank(to_integer(address)) & bank(to_integer(address + 1)) & bank(to_integer(address + 2)) & bank(to_integer(address + 3));
 		end if;
     end process;
 
