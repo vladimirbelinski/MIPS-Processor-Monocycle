@@ -21,11 +21,11 @@ architecture behavior of register_bank is
 
 begin
 
-	bank(0) <= x"00000000";
-
-    process (RegWrite) is
+    process (RegWrite, write_address, write_data) is
     begin
-        if rising_edge(RegWrite) then
+		bank(0) <= x"00000000";
+		
+        if RegWrite = '1' then
 			if (write_address > "00000") then
 				bank(to_integer(write_address)) <= write_data;
 			end if;
