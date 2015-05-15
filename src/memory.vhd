@@ -14,7 +14,7 @@ end memory;
 
 architecture behavior of memory is
 
-    signal bank: byte_memory;
+    signal bank: byte_array(0 to 255);
 
 begin
 

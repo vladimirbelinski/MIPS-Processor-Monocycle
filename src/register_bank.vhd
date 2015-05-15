@@ -17,14 +17,14 @@ end register_bank;
 
 architecture behavior of register_bank is
 
-    signal bank: reg_bank;
+    signal bank: word_array(0 to 31);
 
 begin
 
     process (RegWrite, write_address, write_data) is
     begin
 		bank(0) <= x"00000000";
-		
+
         if RegWrite = '1' then
 			if (write_address > "00000") then
 				bank(to_integer(write_address)) <= write_data;
