@@ -30,7 +30,7 @@ begin
 				if (A < B) then result <= x"00000000";
                 else result <= x"00000001";
                 end if;
-            when "011"  => result <= x"00000000";
+            -- when "011"  => result <= x"00000000";
             when others => result <= A + B;
         end case;
 
