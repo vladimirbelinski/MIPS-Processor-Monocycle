@@ -7,8 +7,8 @@ entity memory is
     port(
 	   MemRead, MemWrite: in std_logic;
        address: in unsigned(31 downto 0);
-       wr_data: in signed(31 downto 0);
-       r_data: out signed(31 downto 0)
+       write_data: in signed(31 downto 0);
+       read_data: out signed(31 downto 0)
     );
 end memory;
 
@@ -18,15 +18,15 @@ architecture behavior of memory is
 
 begin
 
-	process (MemRead, MemWrite, address, wr_data) is
+	process (MemRead, MemWrite, address, write_data) is
 	begin
 		if MemRead = '1' then
-            r_data <= bank(to_integer(address)) & bank(to_integer(address + 1)) & bank(to_integer(address + 2)) & bank(to_integer(address + 3));
+            read_data <= bank(to_integer(address)) & bank(to_integer(address + 1)) & bank(to_integer(address + 2)) & bank(to_integer(address + 3));
 		elsif MemWrite = '1' then
-			bank(to_integer(address))     <= wr_data(31 downto 24);
-			bank(to_integer(address + 1)) <= wr_data(23 downto 16);
-			bank(to_integer(address + 2)) <= wr_data(15 downto 8);
-			bank(to_integer(address + 3)) <= wr_data(7 downto 0);
+			bank(to_integer(address))     <= write_data(31 downto 24);
+			bank(to_integer(address + 1)) <= write_data(23 downto 16);
+			bank(to_integer(address + 2)) <= write_data(15 downto 8);
+			bank(to_integer(address + 3)) <= write_data(7 downto 0);
 		end if;
     end process;
 

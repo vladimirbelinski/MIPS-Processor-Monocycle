@@ -9,9 +9,9 @@ use work.matrix.all;
 entity register_bank is
     port(
        RegWrite: in std_logic;
-       read1, read2, write_address: in unsigned(4 downto 0);
+       read_address1, read_address2, write_address: in unsigned(4 downto 0);
        write_data: in signed(31 downto 0);
-       data1, data2: out signed(31 downto 0)
+       read_data1, read_data2: out signed(31 downto 0)
     );
 end register_bank;
 
@@ -32,14 +32,14 @@ begin
         end if;
     end process;
 
-    process (read1) is
+    process (read_address1) is
     begin
-        data1 <= bank(to_integer(read1));
+        read_data1 <= bank(to_integer(read_address1));
     end process;
 
-    process (read2) is
+    process (read_address2) is
     begin
-        data2 <= bank(to_integer(read2));
+        read_data2 <= bank(to_integer(read_address2));
     end process;
 
 end behavior;
