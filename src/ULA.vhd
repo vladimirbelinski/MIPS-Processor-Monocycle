@@ -30,14 +30,15 @@ begin
 				if (A < B) then result <= x"00000000";
                 else result <= x"00000001";
                 end if;
+            when "011" => result <= x"00000000";
             when others => result <= A + B;
         end case;
-        
+
         if (result = x"00000000") then Zero <= '1';
         else Zero <= '0';
         end if;
     end process;
-    
+
     ALU_result <= result;
-    
+
 end behavior;
