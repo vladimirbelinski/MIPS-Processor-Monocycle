@@ -24,6 +24,7 @@ begin
 					when "0010" => op <= "110"; -- sub
 					when "0100" => op <= "000"; -- and
 					when "0101" => op <= "001"; -- or
+					when "1000" => op <= "011"; -- jr
 					when others => op <= "111"; -- 1010, slt
 				end case;
 		end case;
