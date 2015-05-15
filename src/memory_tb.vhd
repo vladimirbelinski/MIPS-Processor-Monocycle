@@ -50,6 +50,17 @@ begin
 			tb_wr_data <= tb_wr_data + 1;
 		end loop;
 		tb_MemWrite <= '0';
+
+		----------------------------------------------------------------
+		
+		tb_address <= x"00000000";
+		
+		tb_MemRead <= '1';
+		for i in 0 to 63 loop
+			wait for clk_time;
+			tb_address <= tb_address + 4;
+		end loop;
+		tb_MemRead <= '0';
 		
 	end process TB;
 	
