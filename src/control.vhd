@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity control is
 	port(
 		ins_31_26: in unsigned(5 downto 0);
-		RegDst, ALUSrc, MemToReg, RegWrite, MemWrite, MemRead, Branch, BrBne, JMux, JrMux, JalMux: out std_logic;
+		RegDst, ALUSrc, MemToReg, RegWrite, MemWrite, MemRead, Branch, BrBne, JMux, JalMux: out std_logic;
 		ALUOp: out unsigned(1 downto 0)
 	);
 end control;
@@ -28,7 +28,6 @@ begin
 				BrBne    <= '0';
 				ALUOp    <= "11";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0';
 			when x"23"  => -- lw
 				RegDst   <= '0';
@@ -41,7 +40,6 @@ begin
 				BrBne    <= '0';
 				ALUOp    <= "00";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0';
 			when x"2B"  => -- sw
 				RegDst   <= '0'; -- X
@@ -54,7 +52,6 @@ begin
 				BrBne    <= '0';
 				ALUOp    <= "00";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0'; -- X
 			when x"08"  => -- addi
 				RegDst   <= '0';
@@ -67,7 +64,6 @@ begin
 				BrBne    <= '0';
 				ALUOp    <= "00";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0';
 			when x"0C"  => -- slti
 				RegDst   <= '0';
@@ -80,7 +76,6 @@ begin
 				BrBne    <= '0';
 				ALUOp    <= "10";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0';
 			when x"04"  => -- beq
 				RegDst   <= '0'; -- X
@@ -93,7 +88,6 @@ begin
 				BrBne    <= '0';
 				ALUOp    <= "01";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0'; -- X
 			when x"05"  => -- bne
 				RegDst   <= '0'; -- X
@@ -106,7 +100,6 @@ begin
 				BrBne    <= '1';
 				ALUOp    <= "10";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0'; -- X
 			when x"02"  => -- j
 				RegDst   <= '0'; -- X
@@ -119,7 +112,6 @@ begin
 				BrBne    <= '0'; -- X
 				ALUOp    <= "00"; -- XX
 				JMux     <= '1';
-				JrMux    <= '0';
 				JalMux   <= '0'; -- X
 			when x"03"  => -- jal
 				RegDst   <= '0'; -- X
@@ -132,7 +124,6 @@ begin
 				BrBne    <= '0'; -- X
 				ALUOp    <= "00"; -- XX
 				JMux     <= '1';
-				JrMux    <= '0';
 				JalMux   <= '1';
 			when others => -- nop :P
 				RegDst   <= '0';
@@ -145,7 +136,6 @@ begin
 				BrBne    <= '0';
 				ALUOp    <= "00";
 				JMux     <= '0';
-				JrMux    <= '0';
 				JalMux   <= '0';
 		end case;
 	end process;
