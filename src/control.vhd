@@ -14,7 +14,7 @@ architecture behavior of control is
 	signal ins: unsigned(7 downto 0);
 begin
 	ins <= "00" & ins_31_26;
-	process(ins_31_26) is -- activation should be ins_31_26 or ins?
+	process (ins_31_26) is -- activation should be ins_31_26 or ins?
 	begin
 		case ins is
 			when x"00"  => -- R-format

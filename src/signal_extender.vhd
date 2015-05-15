@@ -14,7 +14,7 @@ end signal_extender;
 
 architecture behavior of signal_extender is
 begin
-    process(ins) is
+    process (ins) is
     begin
         if ins(15) = '0' then
             output <= "0000000000000000" & ins;
@@ -22,5 +22,5 @@ begin
             output <= "1111111111111111" & ins;
         end if;
     end process;
-    
+
 end behavior;

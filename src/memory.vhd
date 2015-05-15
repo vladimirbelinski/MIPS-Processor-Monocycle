@@ -18,7 +18,7 @@ architecture behavior of data_memory is
 
 begin
 
-	process(MemRead, MemWrite) is
+	process (MemRead, MemWrite) is
     begin
 		if rising_edge(MemRead) then
             r_data <= bank(to_integer(address));

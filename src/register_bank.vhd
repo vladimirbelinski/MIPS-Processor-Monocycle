@@ -16,26 +16,26 @@ entity register_bank is
 end register_bank;
 
 architecture behavior of register_bank is
-    
+
     signal bank: reg_bank;
-    
+
 begin
-    
-    process(RegWrite) is
+
+    process (RegWrite) is
     begin
         if rising_edge(RegWrite) then
             bank(to_integer(wr)) <= wd;
         end if;
     end process;
-    
-    process(r1) is
+
+    process (r1) is
     begin
         d1 <= bank(to_integer(r1));
     end process;
-    
-    process(r2) is
+
+    process (r2) is
     begin
         d2 <= bank(to_integer(r2));
     end process;
-    
+
 end behavior;

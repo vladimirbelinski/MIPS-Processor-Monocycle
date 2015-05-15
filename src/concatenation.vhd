@@ -13,7 +13,7 @@ end concatenator;
 architecture behavior of concatenator is
 begin
 
-	process(pc_31_28, ins_25_0) is
+	process (pc_31_28, ins_25_0) is
     begin
 		j <= pc_31_28 & ins_25_0 & "00";
     end process;

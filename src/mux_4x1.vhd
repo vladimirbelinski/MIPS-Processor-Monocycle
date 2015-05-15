@@ -15,7 +15,7 @@ end mux_4x1;
 
 architecture behavior of mux_4x1 is
 begin
-    process(sel)
+    process (sel) is
     begin
         case sel is
             when "00"   => O <= I00;
