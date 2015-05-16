@@ -1,3 +1,6 @@
+--Authors: Gabriel Galli and Vladimir Belinski
+--Description: entity and architecture of the concatenator.
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -15,7 +18,7 @@ begin
 
 	process (pc_31_28, ins_25_0) is
     begin
-		j <= pc_31_28 & ins_25_0 & "00";
+		j <= pc_31_28 & (ins_25_0 & "00");
     end process;
 
 end behavior;
