@@ -13,7 +13,7 @@ entity littlemux_4x1 is
     );
 end littlemux_4x1;
 
-architecture behavior of mux_4x1 is
+architecture behavior of littlemux_4x1 is
 begin
     process (sel1, sel2) is
       variable sel: std_logic_vector(1 downto 0);
