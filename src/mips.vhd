@@ -1,3 +1,6 @@
+--Authors: Gabriel Galli and Vladimir Belinski
+--Description: entity and architecture of the general module/encapsulation.
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -34,7 +37,7 @@ architecture behavior of mips is
 	component control is
 		port(
 			ins_31_26: in unsigned(5 downto 0);
-			RegDst, ALUSrc, MemToReg, RegWrite, MemWrite, MemRead, Branch, BrBne, JMux, JalMux: out std_logic;
+			RegDst, ALUSrc, MemtoReg, RegWrite, MemWrite, MemRead, Branch, BrBNE, JMUX, JalMUX: out std_logic;
 			ALUOp: out unsigned(1 downto 0)
 		);
 	end component;
@@ -66,7 +69,7 @@ architecture behavior of mips is
 
 	component PC is
 		port(
-	        reg_clk: in std_logic;
+			clock: in std_logic;
 			D: in signed(31 downto 0);
 			Q: out signed(31 downto 0)
 	    );
@@ -79,6 +82,13 @@ architecture behavior of mips is
 	        write_data: in signed(31 downto 0);
 	        read_data1, read_data2: out signed(31 downto 0)
 	    );
+	end component;
+
+	component signal_extender is
+		port(
+					ins_15_0: in signed(15 downto 0);
+					output: out signed(31 downto 0)
+			);
 	end component;
 
 	component ULA is
