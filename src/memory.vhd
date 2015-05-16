@@ -9,7 +9,7 @@ use work.matrix.all;
 entity memory is
     port(
 	   MemRead, MemWrite: in std_logic;
-       address: in unsigned(31 downto 0);
+       address: in signed(31 downto 0);
        write_data: in signed(31 downto 0);
        read_data: out signed(31 downto 0)
     );
@@ -17,7 +17,7 @@ end memory;
 
 architecture behavior of memory is
 
-    signal bank: byte_array(0 to 255);
+    signal bank: byte_array(-128 to 127);
 
 begin
 

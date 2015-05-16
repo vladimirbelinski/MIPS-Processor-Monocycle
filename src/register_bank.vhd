@@ -9,7 +9,7 @@ use work.matrix.all;
 entity register_bank is
     port(
         RegWrite: in std_logic;
-        read_register1, read_register2, write_register: in unsigned(4 downto 0);
+        read_register1, read_register2, write_register: in signed(4 downto 0);
         write_data: in signed(31 downto 0);
         read_data1, read_data2: out signed(31 downto 0)
     );
@@ -17,7 +17,7 @@ end register_bank;
 
 architecture behavior of register_bank is
 
-    signal bank: word_array(0 to 31);
+    signal bank: word_array(-16 to 15);
 
 begin
 
