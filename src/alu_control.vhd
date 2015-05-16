@@ -1,5 +1,5 @@
---Authors: Gabriel Galli and Vladimir Belinski
---Description: entity and architecture of the ALU Control.
+-- Authors: Gabriel Galli and Vladimir Belinski
+-- Description: entity and architecture of the ALU Control.
 
 library ieee;
 use ieee.std_logic_1164.all;

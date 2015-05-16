@@ -1,5 +1,5 @@
---Authors: Gabriel Galli and Vladimir Belinski
---Description: entity and architecture of a MUX 4X1.
+-- Authors: Gabriel Galli and Vladimir Belinski
+-- Description: entity and architecture of a MUX 4X1.
 
 library ieee;
 use ieee.std_logic_1164.all;

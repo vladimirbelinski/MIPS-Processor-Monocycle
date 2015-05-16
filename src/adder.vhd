@@ -1,5 +1,5 @@
---Authors: Gabriel Galli and Vladimir Belinski
---Description: entity and architecture of an adder.
+-- Authors: Gabriel Galli and Vladimir Belinski
+-- Description: entity and architecture of an adder.
 
 library ieee;
 use ieee.std_logic_1164.all;

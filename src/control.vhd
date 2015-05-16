@@ -1,5 +1,5 @@
---Authors: Gabriel Galli and Vladimir Belinski
---Description: entity and architecture of Control module.
+-- Authors: Gabriel Galli and Vladimir Belinski
+-- Description: entity and architecture of Control module.
 
 library ieee;
 use ieee.std_logic_1164.all;
