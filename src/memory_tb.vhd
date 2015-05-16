@@ -40,7 +40,7 @@ begin
 
 		tb_MemRead <= '0';
 		tb_MemWrite <= '0';
-		tb_address <= x"FFFFFF80";
+		tb_address <= x"00000000";
 		tb_wr_data <= x"00000000";
 
 		tb_MemWrite <= '1';
@@ -53,7 +53,7 @@ begin
 
 		----------------------------------------------------------------
 
-		tb_address <= x"FFFFFF80";
+		tb_address <= x"00000000";
 
 		tb_MemRead <= '1';
 		for i in 0 to 63 loop
