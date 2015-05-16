@@ -7,9 +7,9 @@ use ieee.numeric_std.all;
 
 entity mux_4x1 is
     port(
-       sel: in unsigned(1 downto 0);
-       I00, I01, I10, I11: in signed(31 downto 0);
-       O: out signed(31 downto 0)
+        sel: in unsigned(1 downto 0);
+        I00, I01, I10, I11: in signed(31 downto 0);
+        O: out signed(31 downto 0)
     );
 end mux_4x1;
 

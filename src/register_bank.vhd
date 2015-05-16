@@ -8,10 +8,10 @@ use work.matrix.all;
 
 entity register_bank is
     port(
-       RegWrite: in std_logic;
-       read_address1, read_address2, write_address: in unsigned(4 downto 0);
-       write_data: in signed(31 downto 0);
-       read_data1, read_data2: out signed(31 downto 0)
+        RegWrite: in std_logic;
+        read_address1, read_address2, write_address: in unsigned(4 downto 0);
+        write_data: in signed(31 downto 0);
+        read_data1, read_data2: out signed(31 downto 0)
     );
 end register_bank;
 

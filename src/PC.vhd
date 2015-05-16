@@ -6,11 +6,11 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity PC is
-   port(
-		reg_clk: in std_logic;
+    port(
+        reg_clk: in std_logic;
 		D: in signed(31 downto 0);
 		Q: out signed(31 downto 0)
-   );
+    );
 end PC;
 
 architecture behavior of PC is

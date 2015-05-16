@@ -8,10 +8,10 @@ use ieee.numeric_std.all;
 
 entity ULA is
     port(
-       ALU_control: in unsigned(2 downto 0);
-       A, B: in signed(31 downto 0);
-       Zero: out std_logic;
-       ALU_result: out signed(31 downto 0)
+        ALU_control: in unsigned(2 downto 0);
+        A, B: in signed(31 downto 0);
+        Zero: out std_logic;
+        ALU_result: out signed(31 downto 0)
     );
 end ULA;
 
