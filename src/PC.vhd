@@ -7,9 +7,9 @@ use ieee.numeric_std.all;
 
 entity PC is
     port(
-        clock: in std_logic;
-		D: in signed(31 downto 0);
-		Q: out signed(31 downto 0)
+      clock: in std_logic;
+		  D: in signed(31 downto 0);
+		  Q: out signed(31 downto 0)
     );
 end PC;
 

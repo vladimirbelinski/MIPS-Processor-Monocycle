@@ -6,12 +6,12 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity alu_control is
-	port(
-		ALUOp: in unsigned(1 downto 0);
-		funct: in unsigned(5 downto 0);
-		op: out unsigned(2 downto 0);
-		JrMux: out std_logic
-	);
+		port(
+				ALUOp: in signed(1 downto 0);
+				funct: in signed(5 downto 0);
+				op: out signed(2 downto 0);
+				JrMux: out std_logic
+		);
 end alu_control;
 
 architecture behavior of alu_control is

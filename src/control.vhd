@@ -7,14 +7,14 @@ use ieee.numeric_std.all;
 
 entity control is
 	port(
-		ins_31_26: in unsigned(5 downto 0);
+		ins_31_26: in signed(5 downto 0);
 		RegDst, ALUSrc, MemtoReg, RegWrite, MemWrite, MemRead, Branch, BrBNE, JMUX, JalMUX: out std_logic;
-		ALUOp: out unsigned(1 downto 0)
+		ALUOp: out signed(1 downto 0)
 	);
 end control;
 
 architecture behavior of control is
-	signal ins: unsigned(7 downto 0);
+	signal ins: signed(7 downto 0);
 begin
 	ins <= "00" & ins_31_26;
 	process (ins_31_26) is -- activation should be ins_31_26 or ins?
