@@ -10,15 +10,15 @@ architecture behavior of register_bank_tb is
 
 	constant clk_time: time := 10 ns;
 	signal tb_clk, tb_RegWrite: std_logic;
-	signal tb_read1, tb_read2, tb_write_register: unsigned(4 downto 0);
+	signal tb_read1, tb_read2, tb_write_register: signed(4 downto 0);
 	signal tb_write_data, tb_data1, tb_data2: signed(31 downto 0);
 
 	component register_bank is
 		port(
-		   RegWrite: in std_logic;
-		   read1, read2, write_register: in unsigned(4 downto 0);
-		   write_data: in signed(31 downto 0);
-		   data1, data2: out signed(31 downto 0)
+			RegWrite: in std_logic;
+			read_register1, read_register2, write_register: in signed(4 downto 0);
+			write_data: in signed(31 downto 0);
+			read_data1, read_data2: out signed(31 downto 0)
 		);
 	end component;
 

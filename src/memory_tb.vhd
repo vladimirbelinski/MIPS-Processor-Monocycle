@@ -10,13 +10,13 @@ architecture behavior of memory_tb is
 
 	constant clk_time: time := 50 ns;
 	signal tb_clk, tb_MemRead, tb_MemWrite: std_logic;
-	signal tb_address: unsigned(31 downto 0);
+	signal tb_address: signed(31 downto 0);
 	signal tb_wr_data, tb_r_data: signed(31 downto 0);
 
 	component memory is
 		port(
 		   MemRead, MemWrite: in std_logic;
-		   address: in unsigned(31 downto 0);
+		   address: in signed(31 downto 0);
 		   wr_data: in signed(31 downto 0);
 		   r_data: out signed(31 downto 0)
 		);
@@ -40,7 +40,7 @@ begin
 
 		tb_MemRead <= '0';
 		tb_MemWrite <= '0';
-		tb_address <= x"00000000";
+		tb_address <= x"FFFFFF80";
 		tb_wr_data <= x"00000000";
 
 		tb_MemWrite <= '1';
@@ -53,7 +53,7 @@ begin
 
 		----------------------------------------------------------------
 
-		tb_address <= x"00000000";
+		tb_address <= x"FFFFFF80";
 
 		tb_MemRead <= '1';
 		for i in 0 to 63 loop
