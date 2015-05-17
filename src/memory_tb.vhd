@@ -42,11 +42,12 @@ begin
 		tb_MemWrite <= '0';
 		tb_address <= x"00000000";
 		tb_write_data <= x"00000000";
+		wait for clk_time;
 
 		tb_MemWrite <= '1';
 		for i in 0 to 63 loop
-			wait for clk_time;
 			tb_address <= tb_address + 4;
+			wait for clk_time;
 			tb_write_data <= tb_write_data + 1;
 		end loop;
 		tb_MemWrite <= '0';

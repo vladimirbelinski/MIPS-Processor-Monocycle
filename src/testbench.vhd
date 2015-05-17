@@ -56,49 +56,61 @@ begin
         wait for clk_time;
         Write_IM_tb <= '1';
         Initial_address_tb <= Initial_address_tb + 4;
-
         wait for clk_time;
+        wait for clk_time;
+
         Instruction_tb <= "00100000000010010000000000000000";
         Initial_address_tb <= Initial_address_tb + 4;
+        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00100000000010100000000000000001";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
+        wait for clk_time;
 
         Instruction_tb <= "00000000000000000101100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
+        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00000000000000000110100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
+        wait for clk_time;
 
         Instruction_tb <= "00000001101010000110000000101010";
         Initial_address_tb <= Initial_address_tb + 4;
+        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00010000000011000000000000000101";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
+        wait for clk_time;
 
         Instruction_tb <= "00000001001010100101100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
+        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00000001010000000100100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
+        wait for clk_time;
 
         Instruction_tb <= "00000001011000000101000000100000";
         Initial_address_tb <= Initial_address_tb + 4;
+        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00100001101011010000000000000001";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
+        wait for clk_time;
 
         Instruction_tb <= "00001011111111111111111111111001";
+        wait for clk_time;
         wait for clk_time;
 
         Is_the_first_tb <= '0';
