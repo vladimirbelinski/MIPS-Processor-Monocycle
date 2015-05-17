@@ -22,40 +22,24 @@ architecture behavior of register_bank is
 begin
 
     process (RegWrite, write_register, write_data) is
-      variable wr: integer;
+        variable wr: integer;
     begin
-		  bank(0) <= x"00000000";
+        bank(0) <= x"00000000";
 
-      wr := to_integer(write_register);
-      if (wr < 0) then
-        wr := wr + 32;
-      end if;
-
-      if RegWrite = '1' then
-    			if (wr > 0) then
-    				bank(wr) <= write_data;
-    			end if;
-      end if;
+        wr := to_integer('0' & write_register);
+        if RegWrite = '1' and wr > 0 then
+            bank(wr) <= write_data;
+        end if;
     end process;
 
     process (read_register1) is
-        variable r1: integer;
     begin
-        r1 := to_integer(read_register1);
-        if (r1 < 0) then
-          r1 := r1 + 32;
-        end if;
-        read_data1 <= bank(r1);
+        read_data1 <= bank(to_integer('0' & read_register1));
     end process;
 
     process (read_register2) is
-        variable r2: integer;
     begin
-        r2 := to_integer(read_register2);
-        if (r2 < 0) then
-          r2 := r2 + 32;
-        end if;
-        read_data2 <= bank(r2);
+        read_data2 <= bank(to_integer('0' & read_register2));
     end process;
 
 end behavior;
