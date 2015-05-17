@@ -15,7 +15,7 @@ end mux_4x1;
 
 architecture behavior of mux_4x1 is
 begin
-    process (sel1, sel2) is
+    process (sel1, sel2, I00, I01, I10, I11) is
       variable sel: std_logic_vector(1 downto 0);
     begin
         sel := sel1 & sel2;

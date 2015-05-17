@@ -15,7 +15,7 @@ end mux_2x1;
 
 architecture atrib of mux_2x1 is
 begin
-	process (sel) is
+	process (sel, A, B) is
     begin
         case sel is
             when '0'    => O <= A;

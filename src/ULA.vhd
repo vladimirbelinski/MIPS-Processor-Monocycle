@@ -20,7 +20,7 @@ architecture behavior of ULA is
 	signal result: signed(31 downto 0);
 
 begin
-    process (ALU_control) is
+    process (ALU_control, A, B) is
     begin
         case ALU_control is
             when "000"  => result <= A and B;
