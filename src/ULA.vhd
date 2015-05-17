@@ -25,8 +25,8 @@ begin
             when "001"  => result := A or B;
             when "110"  => result := A - B;
             when "111"  =>
-                if (A < B) then result := x"00000000";
-                else result := x"00000001";
+                if (A < B) then result := x"00000001";
+                else result := x"00000000";
                 end if;
             when "011"  => result := x"00000000";
             when others => result := A + B;
