@@ -6,10 +6,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity monocycle is
-		port(
-				Is_the_first, clock, Read_IM, Write_IM, Is_Out, MemWrite_Out, MemRead_Out: in std_logic;
-				Initial_address, Instruction, Address_Out, Data_Out: in signed(31 downto 0)
-			);
+	port(
+		Is_the_first, clock, Read_IM, Write_IM, Is_Out, MemWrite_Out, MemRead_Out: in std_logic;
+		Initial_address, Instruction, Address_Out, Data_Out: in signed(31 downto 0)
+	);
 end monocycle;
 
 architecture behavior of monocycle is
@@ -98,9 +98,9 @@ architecture behavior of monocycle is
 
 	component signal_extender is
 		port(
-					ins_15_0: in signed(15 downto 0);
-					output: out signed(31 downto 0)
-			);
+			ins_15_0: in signed(15 downto 0);
+			output: out signed(31 downto 0)
+		);
 	end component;
 
 	component ULA is
@@ -113,11 +113,10 @@ architecture behavior of monocycle is
 	end component;
 
 		signal PC_Out, MUX_PC_Out, Adder_PC_4_Out, Adder_Branch_Out, mux_4x1_PC_In_Out, IM_Out, Cat_Out, mux_4x1_DM_Out, SE_Out, mux_2x1_Branch_Out, mux_2x1_ALU_Out, ALU_Out, mux_2x1_DMA_Out, mux_2x1_DMWD_Out, DM_Out, read_data1_Out, read_data2_Out, SE_OutShifted: signed(31 downto 0);
-		signal RegDst_I, ALUSrc_I, MemtoReg_I, RegWrite_I, MemWrite_I, MemRead_I, Branch_I, BrBNE_I, JMUX_I, JalMUX_I, JrMux_I, Zero_Out: std_logic;
+		signal RegDst_I, ALUSrc_I, MemtoReg_I, RegWrite_I, MemWrite_I, MemRead_I, Branch_I, BrBNE_I, JMUX_I, JalMUX_I, JrMux_I, Zero_Out, MemReadOr, MemWriteOr, BranchSel: std_logic;
 		signal ALUOp_I: signed (1 downto 0);
 		signal ALUC_Out: signed (2 downto 0);
 		signal mux_4x1_R_Out: signed (4 downto 0);
-		signal MemReadOr, MemWriteOr, BranchSel: std_logic;
 
 begin
 
