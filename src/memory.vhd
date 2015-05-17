@@ -18,13 +18,13 @@ end memory;
 architecture behavior of memory is
 
     signal bank: byte_array(0 to 255);
+    signal addr: integer;
 
 begin
 
 	process (MemRead, MemWrite, address, write_data) is
-        variable addr: integer;
 	begin
-        addr := to_integer(address);
+        addr <= to_integer(address);
 
         if MemWrite = '1' then
 			bank(addr)     <= write_data(31 downto 24);

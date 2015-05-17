@@ -39,8 +39,8 @@ begin
         wait for clk_time;
 
         Is_the_first_tb <= '1';
+        Write_IM_tb <= '0';
         Read_IM_tb <= '0';
-        Write_IM_tb <= '1';
         Is_Out_tb <= '0'; -- controla muxes pra escrever na memória de dados
         MemWrite_Out_tb <= '0'; -- or pra escrita na memória de dados
         MemRead_Out_tb <= '0'; -- or pra leitura na memória de dados
@@ -51,8 +51,10 @@ begin
         -- Instruction_tb <= "00001100000000000000000000001010"; -- jal somewhere (10 linhas abaixo de PC+4)
 
         Initial_address_tb <= x"00000000";
+        wait for clk_time;
         Instruction_tb <= "00100000000010000000000000001010";
         wait for clk_time;
+        Write_IM_tb <= '1';
 
         Initial_address_tb <= Initial_address_tb + 4;
         Instruction_tb <= "00100000000010010000000000000000";

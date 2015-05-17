@@ -24,7 +24,7 @@ architecture behavior of memory_tb is
 
 begin
 
-		MEM: memory port map(tb_MemRead, tb_MemWrite, tb_address, tb_wr_data, tb_r_data)	;
+	MEM: memory port map(tb_MemRead, tb_MemWrite, tb_address, tb_wr_data, tb_r_data);
 
 	CLK: process is
 	begin
