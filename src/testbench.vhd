@@ -46,7 +46,8 @@ begin
     MemWrite_Out_tb <= '0'; -- or pra escrita na memória de dados
     MemRead_Out_tb <= '0'; -- or pra leitura na memória de dados
     Initial_address_tb <= x"00000000";
-    Instruction_tb <= "00000000000000000100000000100000"; -- add $t0, $0, $0
+    -- Instruction_tb <= "00000000000000000100000000100000"; -- add $t0, $0, $0
+    Instruction_tb <= "00010000000000001111111111111111"; -- beq $t0, $0, -1
     Address_Out_tb <= x"00000000"; -- endereço para memória de dados
     Data_Out_tb <= x"00000000"; -- dado para a memória de dados
 
@@ -57,6 +58,28 @@ begin
     Read_IM_tb <= '1';
 
     wait for clk_time;
+
+    Is_the_first_tb <= '0';
+    Write_IM_tb <= '0';
+    Read_IM_tb <= '1';
+
+    wait for clk_time;
+
+    Is_the_first_tb <= '0';
+    Write_IM_tb <= '0';
+    Read_IM_tb <= '1';
+
+    wait for clk_time;
+
+    Is_the_first_tb <= '0';
+    Write_IM_tb <= '0';
+    Read_IM_tb <= '1';
+
+    wait for clk_time;
+
+    Is_the_first_tb <= '0';
+    Write_IM_tb <= '0';
+    Read_IM_tb <= '1';
 
     wait;
   end process TB;
