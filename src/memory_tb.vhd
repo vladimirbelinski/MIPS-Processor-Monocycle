@@ -8,10 +8,10 @@ end memory_tb;
 
 architecture behavior of memory_tb is
 
-	constant clk_time: time := 10 ns;
+	constant clk_time: time := 10 ps;
 	signal tb_clk, tb_MemRead, tb_MemWrite: std_logic;
 	signal tb_address: signed(31 downto 0);
-	signal tb_wr_data, tb_r_data: signed(31 downto 0);
+	signal tb_write_data, tb_read_data: signed(31 downto 0);
 
 	component memory is
 		port(
@@ -24,13 +24,13 @@ architecture behavior of memory_tb is
 
 begin
 
-	MEM: memory port map(tb_MemRead, tb_MemWrite, tb_address, tb_wr_data, tb_r_data);
+	MEM: memory port map(tb_MemRead, tb_MemWrite, tb_address, tb_write_data, tb_read_data);
 
 	CLK: process is
 	begin
-		tb_clk <= '0';
-		wait for (clk_time / 2);
 		tb_clk <= '1';
+		wait for (clk_time / 2);
+		tb_clk <= '0';
 		wait for (clk_time / 2);
 	end process CLK;
 
@@ -41,13 +41,13 @@ begin
 		tb_MemRead <= '0';
 		tb_MemWrite <= '0';
 		tb_address <= x"00000000";
-		tb_wr_data <= x"00000000";
+		tb_write_data <= x"00000000";
 
 		tb_MemWrite <= '1';
 		for i in 0 to 63 loop
 			wait for clk_time;
 			tb_address <= tb_address + 4;
-			tb_wr_data <= tb_wr_data + 1;
+			tb_write_data <= tb_write_data + 1;
 		end loop;
 		tb_MemWrite <= '0';
 
