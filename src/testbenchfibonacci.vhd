@@ -1,15 +1,15 @@
 -- Authors: Gabriel Galli and Vladimir Belinski
--- Description: entity and architecture of the testbench.
+-- Description: entity and architecture of the testbench for Fibonacci.
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.matrix.all;
 
-entity testbench is
-end testbench;
+entity testbenchfibonacci is
+end testbenchfibonacci;
 
-architecture behavior of testbench is
+architecture behavior of testbenchfibonacci is
 
     constant clk_time: time := 10 ps;
     signal tb_clk, Is_the_first_tb, Read_IM_tb, Write_IM_tb, Is_Out_tb, MemWrite_Out_tb, MemRead_Out_tb: std_logic;
