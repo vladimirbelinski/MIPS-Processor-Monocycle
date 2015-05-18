@@ -35,6 +35,7 @@ begin
     end process CLK;
 
     TB: process is
+        variable i: integer;
     begin
         wait for clk_time;
 
@@ -119,27 +120,12 @@ begin
         Read_IM_tb <= '1';
         wait for clk_time;
 
-        Is_the_first_tb <= '0';
-        Write_IM_tb <= '0';
-        Read_IM_tb <= '1';
-
-        wait for clk_time;
-
-        Is_the_first_tb <= '0';
-        Write_IM_tb <= '0';
-        Read_IM_tb <= '1';
-
-        wait for clk_time;
-
-        Is_the_first_tb <= '0';
-        Write_IM_tb <= '0';
-        Read_IM_tb <= '1';
-
-        wait for clk_time;
-
-        Is_the_first_tb <= '0';
-        Write_IM_tb <= '0';
-        Read_IM_tb <= '1';
+        for i in 0 to 300 loop
+            Write_IM_tb <= '0';
+            Is_the_first_tb <= '0';
+            Read_IM_tb <= '1';
+            wait for clk_time;
+        end loop;
 
         wait;
     end process TB;

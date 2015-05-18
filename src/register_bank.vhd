@@ -33,13 +33,21 @@ begin
     end process;
 
     process (read_register1) is
+        variable rr1: integer;
     begin
-        read_data1 <= bank(to_integer('0' & read_register1));
+        rr1 := to_integer('0' & read_register1);
+        if (rr1 >= 0) then
+            read_data1 <= bank(rr1);
+        end if;
     end process;
 
     process (read_register2) is
+        variable rr2: integer;
     begin
-        read_data2 <= bank(to_integer('0' & read_register2));
+        rr2 := to_integer('0' & read_register2);
+        if (rr2 >= 0) then
+            read_data2 <= bank(rr2);
+        end if;
     end process;
 
 end behavior;

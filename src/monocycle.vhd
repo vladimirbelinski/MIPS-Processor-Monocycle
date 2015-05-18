@@ -89,10 +89,10 @@ architecture behavior of monocycle is
 
 	component register_bank is
 		port(
-	        RegWrite: in std_logic;
-	        read_register1, read_register2, write_register: in signed(4 downto 0);
-	        write_data: in signed(31 downto 0);
-	        read_data1, read_data2: out signed(31 downto 0)
+			RegWrite: in std_logic;
+			read_register1, read_register2, write_register: in signed(4 downto 0);
+			write_data: in signed(31 downto 0);
+			read_data1, read_data2: out signed(31 downto 0)
 	    );
 	end component;
 
