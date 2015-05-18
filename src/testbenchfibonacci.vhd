@@ -113,12 +113,10 @@ begin
         Instruction_tb <= "00001000000000000000000000000101";
         Initial_address_tb <= x"00000000";
         wait for clk_time;
+        wait for clk_time;
         Write_IM_tb <= '0';
-        wait for clk_time;
-
-        Is_the_first_tb <= '0';
         Read_IM_tb <= '1';
-        wait for clk_time;
+        Is_the_first_tb <= '0';
 
         for i in 0 to 300 loop
             Write_IM_tb <= '0';
