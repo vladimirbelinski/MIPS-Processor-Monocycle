@@ -89,7 +89,7 @@ architecture behavior of monocycle is
 
 	component register_bank is
 		port(
-			RegWrite: in std_logic;
+			clock, RegWrite: in std_logic;
 			read_register1, read_register2, write_register: in signed(4 downto 0);
 			write_data: in signed(31 downto 0);
 			read_data1, read_data2: out signed(31 downto 0)
@@ -132,7 +132,7 @@ begin
 	Cat: concatenator port map (PC_Out(31 downto 28), IM_Out(25 downto 0), Cat_Out);
 	Ctrl: control port map (IM_Out(31 downto 26), RegDst_I, ALUSrc_I, MemtoReg_I, RegWrite_I, MemWrite_I, MemRead_I, Branch_I, BrBNE_I, JMUX_I, JalMUX_I, ALUOp_I);
 	mux_4x1_R: littlemux_4x1 port map (JalMUX_I, RegDst_I, IM_Out(20 downto 16), IM_Out(15 downto 11), "11111", "00000", mux_4x1_R_Out);
-	RB: register_bank port map (RegWrite_I, IM_Out(25 downto 21), IM_Out(20 downto 16), mux_4x1_R_Out, mux_4x1_DM_Out, read_data1_Out, read_data2_Out);
+	RB: register_bank port map (clock, RegWrite_I, IM_Out(25 downto 21), IM_Out(20 downto 16), mux_4x1_R_Out, mux_4x1_DM_Out, read_data1_Out, read_data2_Out);
 	SE: signal_extender port map (IM_Out(15 downto 0), SE_Out);
 	mux_4x1_PC_In: mux_4x1 port map (JMUX_I, JrMux_I, mux_2x1_Branch_Out, read_data1_Out, Cat_Out, Cat_Out, mux_4x1_PC_In_Out);
 	mux_2x1_ALU: mux_2x1 port map (ALUSrc_I, read_data2_Out, SE_Out, mux_2x1_ALU_Out);

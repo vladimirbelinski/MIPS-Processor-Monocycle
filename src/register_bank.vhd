@@ -8,7 +8,7 @@ use work.matrix.all;
 
 entity register_bank is
     port(
-        RegWrite: in std_logic;
+        clock, RegWrite: in std_logic;
         read_register1, read_register2, write_register: in signed(4 downto 0);
         write_data: in signed(31 downto 0);
         read_data1, read_data2: out signed(31 downto 0)
@@ -21,14 +21,16 @@ architecture behavior of register_bank is
 
 begin
 
-    process (RegWrite, write_register, write_data) is
+    process (clock) is
         variable wr: integer;
     begin
         bank(0) <= x"00000000";
 
-        wr := to_integer('0' & write_register);
-        if RegWrite = '1' and wr > 0 then
-            bank(wr) <= write_data;
+        if falling_edge(clock) then
+            wr := to_integer('0' & write_register);
+            if RegWrite = '1' and wr > 0 then
+                bank(wr) <= write_data;
+            end if;
         end if;
     end process;
 
