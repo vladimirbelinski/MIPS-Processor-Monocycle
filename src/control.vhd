@@ -68,7 +68,7 @@ begin
 				ALUOp    <= "00";
 				JMUX     <= '0';
 				JalMUX   <= '0';
-			when x"0C"  => -- slti
+			when x"0A"  => -- slti
 				RegDst   <= '0';
 				ALUSrc   <= '1';
 				MemtoReg <= '0';
