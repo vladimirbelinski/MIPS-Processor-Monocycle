@@ -56,7 +56,7 @@ architecture behavior of monocycle is
 
 	component memory is
 		port(
-		   MemRead, MemWrite: in std_logic;
+		   clock, MemRead, MemWrite: in std_logic;
 	       address: in signed(31 downto 0);
 	       write_data: in signed(31 downto 0);
 	       read_data: out signed(31 downto 0)
@@ -128,7 +128,7 @@ begin
 	MUX_PC: mux_2x1 port map (Is_the_first, mux_4x1_PC_In_Out, Initial_address, MUX_PC_Out);
 	PC_I: PC port map (clock, MUX_PC_Out, PC_Out);
 	Adder_PC_4: adder port map (PC_Out, x"00000004", Adder_PC_4_Out);
-	IM: memory port map (Read_IM, Write_IM, PC_Out, Instruction, IM_Out);
+	IM: memory port map (clock, Read_IM, Write_IM, PC_Out, Instruction, IM_Out);
 	Cat: concatenator port map (PC_Out(31 downto 28), IM_Out(25 downto 0), Cat_Out);
 	Ctrl: control port map (IM_Out(31 downto 26), RegDst_I, ALUSrc_I, MemtoReg_I, RegWrite_I, MemWrite_I, MemRead_I, Branch_I, BrBNE_I, JMUX_I, JalMUX_I, ALUOp_I);
 	mux_4x1_R: littlemux_4x1 port map (JalMUX_I, RegDst_I, IM_Out(20 downto 16), IM_Out(15 downto 11), "11111", "00000", mux_4x1_R_Out);
@@ -142,7 +142,7 @@ begin
 	mux_2x1_Branch: mux_2x1 port map (BranchSel, Adder_PC_4_Out, Adder_Branch_Out, mux_2x1_Branch_Out);
 	mux_2x1_DMA: mux_2x1 port map (Is_Out, ALU_Out, Address_Out, mux_2x1_DMA_Out);
 	mux_2x1_DMWD: mux_2x1 port map (Is_Out, read_data2_Out, Data_Out, mux_2x1_DMWD_Out);
-	DM: memory port map (MemReadOr, MemWriteOr, mux_2x1_DMA_Out, mux_2x1_DMWD_Out, DM_Out);
+	DM: memory port map (clock, MemReadOr, MemWriteOr, mux_2x1_DMA_Out, mux_2x1_DMWD_Out, DM_Out);
 	mux_4x1_DM: mux_4x1 port map (JalMUX_I, MemtoReg_I, mux_2x1_DMA_Out, DM_Out, Adder_PC_4_Out, x"00000000", mux_4x1_DM_Out);
 
 end behavior;

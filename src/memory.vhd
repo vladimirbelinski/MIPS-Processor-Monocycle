@@ -8,7 +8,7 @@ use work.matrix.all;
 
 entity memory is
     port(
-	    MemRead, MemWrite: in std_logic;
+        clock, MemRead, MemWrite: in std_logic;
         address: in signed(31 downto 0);
         write_data: in signed(31 downto 0);
         read_data: out signed(31 downto 0)
@@ -22,18 +22,20 @@ architecture behavior of memory is
 
 begin
 
-	process (MemRead, MemWrite, address, write_data) is
-	begin
-        addr <= to_integer(address);
+    process (clock) is
+    begin
+        if falling_edge(clock) then
+            addr <= to_integer(address);
 
-        if MemWrite = '1' then
-			bank(addr)     <= write_data(31 downto 24);
-			bank(addr + 1) <= write_data(23 downto 16);
-			bank(addr + 2) <= write_data(15 downto 8);
-			bank(addr + 3) <= write_data(7 downto 0);
-		elsif MemRead = '1' then
-            read_data <= bank(addr) & bank(addr + 1) & bank(addr + 2) & bank(addr + 3);
-		end if;
+            if MemWrite = '1' then
+                bank(addr)     <= write_data(31 downto 24);
+                bank(addr + 1) <= write_data(23 downto 16);
+                bank(addr + 2) <= write_data(15 downto 8);
+                bank(addr + 3) <= write_data(7 downto 0);
+            elsif MemRead = '1' then
+                read_data <= bank(addr) & bank(addr + 1) & bank(addr + 2) & bank(addr + 3);
+            end if;
+        end if;
     end process;
 
 end behavior;
