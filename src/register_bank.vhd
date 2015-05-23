@@ -17,15 +17,13 @@ end register_bank;
 
 architecture behavior of register_bank is
 
-    signal bank: word_array(0 to 31);
+    signal bank: word_array(0 to 31) := (others => x"00000000");
 
 begin
 
     process (clock) is
         variable wr: integer;
     begin
-        bank(0) <= x"00000000";
-
         if falling_edge(clock) then
             wr := to_integer('0' & write_register);
             if RegWrite = '1' and wr > 0 then
@@ -38,18 +36,14 @@ begin
         variable rr1: integer;
     begin
         rr1 := to_integer('0' & read_register1);
-        if (rr1 >= 0) then
-            read_data1 <= bank(rr1);
-        end if;
+        read_data1 <= bank(rr1);
     end process;
 
     process (read_register2) is
         variable rr2: integer;
     begin
         rr2 := to_integer('0' & read_register2);
-        if (rr2 >= 0) then
-            read_data2 <= bank(rr2);
-        end if;
+        read_data2 <= bank(rr2);
     end process;
 
 end behavior;
