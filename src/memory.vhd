@@ -18,15 +18,15 @@ end memory;
 architecture behavior of memory is
 
     signal bank: byte_array(0 to 255);
-    signal addr: integer;
+    signal addr: integer := -1;
 
 begin
 
-    process (clock) is
+    process (clock, address) is
     begin
-        if falling_edge(clock) then
-            addr <= to_integer(address);
+        addr <= to_integer(address);
 
+        if falling_edge(clock) then
             if MemWrite = '1' then
                 bank(addr)     <= write_data(31 downto 24);
                 bank(addr + 1) <= write_data(23 downto 16);
