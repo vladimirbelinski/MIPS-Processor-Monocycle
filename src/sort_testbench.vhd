@@ -139,7 +139,7 @@ begin
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
 
-        Instruction_tb <= "10001110001001010000000000000000";
+        Instruction_tb <= "00000010001000000010100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
 
