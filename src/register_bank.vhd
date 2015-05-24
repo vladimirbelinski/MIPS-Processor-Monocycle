@@ -22,7 +22,7 @@ architecture behavior of register_bank is
 begin
 
     process (clock) is
-        variable wr: integer;
+        variable wr, rr1, rr2: integer;
     begin
         if falling_edge(clock) then
             wr := to_integer('0' & write_register);
@@ -30,20 +30,26 @@ begin
                 bank(wr) <= write_data;
             end if;
         end if;
-    end process;
 
-    process (read_register1) is
-        variable rr1: integer;
-    begin
         rr1 := to_integer('0' & read_register1);
         read_data1 <= bank(rr1);
-    end process;
 
-    process (read_register2) is
-        variable rr2: integer;
-    begin
         rr2 := to_integer('0' & read_register2);
         read_data2 <= bank(rr2);
     end process;
+
+    -- process (read_register1) is
+    --     variable rr1: integer;
+    -- begin
+    --     rr1 := to_integer('0' & read_register1);
+    --     read_data1 <= bank(rr1);
+    -- end process;
+    --
+    -- process (read_register2) is
+    --     variable rr2: integer;
+    -- begin
+    --     rr2 := to_integer('0' & read_register2);
+    --     read_data2 <= bank(rr2);
+    -- end process;
 
 end behavior;
