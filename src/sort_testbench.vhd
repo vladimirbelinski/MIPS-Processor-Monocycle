@@ -139,6 +139,10 @@ begin
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
 
+        -- Instruction_tb <= "00000000000000000010000000100000"; -- add $a0, $0, $0
+        -- Initial_address_tb <= Initial_address_tb + 4; -- não precisa pq já tá tudo 0
+        -- wait for clk_time;
+
         Instruction_tb <= "00000010001000000010100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
