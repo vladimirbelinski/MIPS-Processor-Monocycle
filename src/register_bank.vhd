@@ -21,7 +21,7 @@ architecture behavior of register_bank is
 
 begin
 
-    process (clock) is
+    process (clock, read_register1, read_register2, write_register, write_data) is
         variable wr, rr1, rr2: integer;
     begin
         if falling_edge(clock) then
