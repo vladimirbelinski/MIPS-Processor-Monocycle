@@ -1,15 +1,15 @@
 -- Authors: Gabriel Galli and Vladimir Belinski
--- Description: entity and architecture of the testbench for Fibonacci.
+-- Description: entity and architecture of the testbench for up to 'X' Fibonacci numbers.
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.matrix.all;
 
-entity testbenchfibonacci is
-end testbenchfibonacci;
+entity fibonacci_testbench is
+end fibonacci_testbench;
 
-architecture behavior of testbenchfibonacci is
+architecture behavior of fibonacci_testbench is
 
     constant clk_time: time := 10 ps;
     signal tb_clk, Is_the_first_tb, Read_IM_tb, Write_IM_tb, Is_Out_tb, MemWrite_Out_tb, MemRead_Out_tb: std_logic;
@@ -37,91 +37,73 @@ begin
     TB: process is
         variable i: integer;
     begin
-        wait for clk_time;
-
-        Is_the_first_tb <= '1';
-        Write_IM_tb <= '0';
-        Read_IM_tb <= '0';
-        Is_Out_tb <= '0'; -- controla muxes pra escrever na memória de dados
-        MemWrite_Out_tb <= '0'; -- or pra escrita na memória de dados
-        MemRead_Out_tb <= '0'; -- or pra leitura na memória de dados
-        Address_Out_tb <= x"00000000"; -- endereço para memória de dados
-        Data_Out_tb <= x"00000000"; -- dado para a memória de dados
-        -- Instruction_tb <= "00000000000000000100000000100000"; -- add $t0, $0, $0
-        -- Instruction_tb <= "00010000000000001111111111111111"; -- beq $t0, $0, -1
-        -- Instruction_tb <= "00001100000000000000000000001010"; -- jal somewhere (10 linhas abaixo de PC+4)
-
         Initial_address_tb <= x"00000000";
-        wait for clk_time;
         Instruction_tb <= "00100000000010000000000000001010";
+        Read_IM_tb <= '0';
+        -- Is_the_first_tb <= '0';
+        Write_IM_tb <= '0';
+        Is_Out_tb <= '0';
+        Address_Out_tb <= x"00000000";
+        MemRead_Out_tb <= '0';
+        MemWrite_Out_tb <= '0';
+        Data_Out_tb <= x"00000000";
+        Is_the_first_tb <= '1';
         wait for clk_time;
+
         Write_IM_tb <= '1';
+
         Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00100000000010010000000000000000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
-        wait for clk_time;
 
         Instruction_tb <= "00100000000010100000000000000001";
         Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00000000000000000101100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
-        wait for clk_time;
 
         Instruction_tb <= "00000000000000000110100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00000001101010000110000000101010";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
-        wait for clk_time;
 
         Instruction_tb <= "00010000000011000000000000000101";
         Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00000001001010100101100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
-        wait for clk_time;
 
         Instruction_tb <= "00000001010000000100100000100000";
         Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00000001011000000101000000100000";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
-        wait for clk_time;
 
         Instruction_tb <= "00100001101011010000000000000001";
         Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
         wait for clk_time;
 
         Instruction_tb <= "00001000000000000000000000000101";
         Initial_address_tb <= x"00000000";
         wait for clk_time;
-        wait for clk_time;
+
         Write_IM_tb <= '0';
-        Read_IM_tb <= '1';
         Is_the_first_tb <= '0';
+        Read_IM_tb <= '1';
 
         for i in 0 to 300 loop
-            Write_IM_tb <= '0';
-            Is_the_first_tb <= '0';
-            Read_IM_tb <= '1';
             wait for clk_time;
         end loop;
 
