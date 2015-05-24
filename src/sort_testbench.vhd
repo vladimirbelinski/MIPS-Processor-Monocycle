@@ -272,9 +272,6 @@ begin
         wait for clk_time;
 
         Instruction_tb <= "00000011111000000000000000001000";
-        Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
-
         Initial_address_tb <= x"00000000";
         wait for clk_time;
 
