@@ -119,10 +119,6 @@ begin
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
 
-        Instruction_tb <= "00100000000010000000000000001001";
-        Initial_address_tb <= Initial_address_tb + 4;
-        wait for clk_time;
-
         Instruction_tb <= "10101110000010000000000000011100";
         Initial_address_tb <= Initial_address_tb + 4;
         wait for clk_time;
